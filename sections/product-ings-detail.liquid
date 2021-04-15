@@ -1,0 +1,200 @@
+<style scoped>
+  .ingredients-details-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+  .ingredients-details-container-row {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .text-section {
+/*   	border: 1px solid blue; */
+  }
+  .table-section {
+    padding-right: 0px;
+  }
+  .nutrition_rows {
+  	padding: 0px;
+  }
+  .nutrition_body, th, td {
+    border: none;
+  }
+  .nutrition_title {
+  	display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8e8e8;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .nutrition-title-text {
+  	margin-bottom: 0px;
+  }
+  .nutrition_item {
+  	font-weight: 400;
+  }
+  .DETAILS_text {
+  	font-size: 50px;
+  }
+</style>
+<div class="ingredients-details-container">
+  <center><h1 class="h1 DETAILS_text">The Details</h1></center>
+  <div class="feature-row ingredients-details-container-row">
+    <div class="feature-row p-0">
+      <div class="text-section feature_row feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
+          <h1 class="h1">INGREDIENTS</h1>
+          <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+            aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+            nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+            ex ea commodo consequat. Duis autem vel eum iriure dolor in
+            hendrerit in vulputate velit esse molestie consequat, vel illum
+            dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
+            odio dignissim qui blandit praesent luptatum zzril delenit augue
+            duis dolore te feugait nulla facilisi.</p>
+        <h4 class="h4">Directions</h4>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+          aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+          nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+          ex ea commodo consequat. </p>
+        <h4 class="h4">Disclaimers & Warnings</h4>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          diam nonummy nibh euismod tincidunt ut laoreet dolore magna. </p>
+      </div>
+      <div class="table-section feature_row feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
+          <table class="nutrition_body" border=0 cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th class="nutrition_title">
+                  <h1 class="h1 nutrition-title-text">NUTRITION</h1>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nutrition_rows">
+                  <table class="nutrition_body" border=0 cellspacing="0" cellpadding="0">
+                    <tbody>
+                      {%- assign index = 0 -%}
+                      {%- assign highlight_color = "#ffffff" -%}
+                      {% for i in (0..5) %}
+                      	{% assign mod = i | modulo: 2 %}
+                        {%- if mod == 0 -%}
+                          {%- assign highlight_color = "#ffffff" -%}
+                        {%- else -%}
+                          {%- assign highlight_color = "#e8e8e8" -%}
+                        {%- endif -%}
+                      <tr style="background-color: {{highlight_color}};">
+                        <td><h5 class="nutrition_item">Lorem Ispum</h5></td>
+                        <td><h5 class="nutrition_item">0</h5></td>
+                      </tr>
+                      {%endfor%}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+      <div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+		{
+        "type": "select",
+        "id": "layout",
+        "label": {
+          "cs": "Zarovnání obrázku",
+          "da": "Justering af billede",
+          "de": "Fotoausrichtung",
+          "en": "Image alignment",
+          "es": "Alineación de imagen",
+          "fi": "Kuvan tasaus",
+          "fr": "Alignement de l'image",
+          "it": "Allineamento immagine",
+          "ja": "画像アラインメント",
+          "ko": "이미지 정렬",
+          "nb": "Bildejustering",
+          "nl": "Afbeelding uitlijnen",
+          "pl": "Wyrównanie obrazu",
+          "pt-BR": "Alinhamento da imagem",
+          "pt-PT": "Alinhamento da imagem",
+          "sv": "Bildjustering",
+          "th": "การจัดวางรูปภาพ",
+          "tr": "Görsel hizalaması",
+          "vi": "Căn chỉnh hình ảnh",
+          "zh-CN": "图片对齐方式",
+          "zh-TW": "圖片對齊"
+        },
+        "default": "right",
+        "options": [
+          {
+            "value": "left",
+            "label": {
+              "cs": "Doleva",
+              "da": "Venstre",
+              "de": "Links",
+              "en": "Left",
+              "es": "Izquierda",
+              "fi": "Vasen",
+              "fr": "Gauche",
+              "it": "Sinistra",
+              "ja": "左",
+              "ko": "왼쪽",
+              "nb": "Venstre",
+              "nl": "Links",
+              "pl": "Do lewej",
+              "pt-BR": "Esquerda",
+              "pt-PT": "Esquerda",
+              "sv": "Vänster",
+              "th": "ด้านซ้าย",
+              "tr": "Sol",
+              "vi": "Bên trái",
+              "zh-CN": "左侧",
+              "zh-TW": "左方"
+            }
+          },
+          {
+            "value": "right",
+            "label": {
+              "cs": "Doprava",
+              "da": "Højre",
+              "de": "Rechts",
+              "en": "Right",
+              "es": "Derecha",
+              "fi": "Oikea",
+              "fr": "Droite",
+              "it": "Destra",
+              "ja": "右",
+              "ko": "오른쪽",
+              "nb": "Høyre",
+              "nl": "Rechts",
+              "pl": "Do prawej",
+              "pt-BR": "Direita",
+              "pt-PT": "Direita",
+              "sv": "Höger",
+              "th": "ด้านขวา",
+              "tr": "Sağ",
+              "vi": "Bên phải",
+              "zh-CN": "右侧",
+            "zh-TW": "右方"
+          }
+        }
+      ]
+    }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

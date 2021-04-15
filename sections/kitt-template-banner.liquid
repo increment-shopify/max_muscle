@@ -1,0 +1,92 @@
+<div>
+  {% capture image_layout %}
+  {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_1024x1024@2x.' -%}
+    <div class="product-ing-image" style="height: {{section.settings.height}}px; background-image: url('https:{{ img_url }}'); background-repeat: no-repeat; background-position: center; background-size: 100% 250%;">
+      {% if section.settings.image != blank %}
+        <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js">
+        </div>
+
+        <noscript>
+          {{ section.settings.image | img_url: '600x600', scale: 2 | img_tag: section.settings.image.alt, 'feature-row__image' }}
+        </noscript>
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+  <div style="margin-top: -50px;">
+    {{image_layout}}
+    <div style="position: relative; min-height: {{section.settings.height | times: 1 | times: 0.2}}px; background-color: #404040; text-align: center;">
+      <h1 style="color: {{section.settings.titlecolor1}}; font-size: {{section.settings.height | times: 1 | times: 0.2 | plus: 20}}px;">{{section.settings.title1}}</h1>
+    </div>
+    <div style="text-align: center; margin-top: -20px;">
+      <h1 style="color: {{section.settings.titlecolor2}}; font-size: {{section.settings.height | times: 1 | times: 0.2}}px;">{{section.settings.title2}}</h1>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+        	"type": "image_picker",
+        	"id": "image",
+        	"label": {
+         		 "en": "Image"
+        	}
+		},
+		{
+			"type" : "number",
+			"id" : "height",
+			"label": {
+				"en": "Banner Height"
+			},
+			"default" : 300
+		},
+		{
+			"type" : "text",
+			"id" : "title1",
+			"label": {
+				"en": "Title 1"
+			},
+			"default" : {
+				"en" : "PERFORMANCE"
+			}
+		},
+		{
+			"type" : "color",
+			"id" : "titlecolor1",
+			"label": {
+				"en": "Title 1 Color"
+			},
+			"default" : "#ffffff"
+		},
+		{
+			"type" : "text",
+			"id" : "title2",
+			"label": {
+				"en": "Title 2"
+			},
+			"default" : {
+				"en" : "PACKAGES"
+			}
+		},
+		{
+			"type" : "color",
+			"id" : "titlecolor2",
+			"label": {
+				"en": "Title 2 Color"
+			},
+			"default" : "#000000"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
